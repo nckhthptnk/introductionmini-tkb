@@ -456,11 +456,6 @@
       <div style="margin-bottom: 24px;"><label for="feedback-name" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Họ và tên</label> <input type="text" id="feedback-name" name="name" placeholder="Nhập họ và tên của bạn" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; transition: border-color 0.2s; box-sizing: border-box;">
       </div><!-- Email Field -->
       <div style="margin-bottom: 24px;"><label for="feedback-email" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Email (tùy chọn)</label> <input type="email" id="feedback-email" name="email" placeholder="email@example.com" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; transition: border-color 0.2s; box-sizing: border-box;">
-      </div><!-- Rating Field -->
-      <div style="margin-bottom: 24px;"><label style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 12px; font-size: 14px;">Đánh giá tổng thể</label>
-       <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 8px;"><button type="button" class="rating-star" data-rating="1" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #e2e8f0; transition: color 0.2s;">⭐</button> <button type="button" class="rating-star" data-rating="2" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #e2e8f0; transition: color 0.2s;">⭐</button> <button type="button" class="rating-star" data-rating="3" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #e2e8f0; transition: color 0.2s;">⭐</button> <button type="button" class="rating-star" data-rating="4" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #e2e8f0; transition: color 0.2s;">⭐</button> <button type="button" class="rating-star" data-rating="5" style="background: none; border: none; font-size: 32px; cursor: pointer; color: #e2e8f0; transition: color 0.2s;">⭐</button>
-       </div>
-       <p style="text-align: center; color: #718096; font-size: 14px; margin: 0;">Nhấn vào sao để đánh giá</p><input type="hidden" id="rating-value" name="rating" value="">
       </div><!-- Category Field -->
       <div style="margin-bottom: 24px;"><label for="feedback-category" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Loại phản hồi</label> <select id="feedback-category" name="category" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; background: white; box-sizing: border-box;"> <option value="">Chọn loại phản hồi</option> <option value="bug">Báo lỗi</option> <option value="feature">Đề xuất tính năng</option> <option value="improvement">Cải thiện</option> <option value="general">Ý kiến chung</option> <option value="other">Khác</option> </select>
       </div><!-- Message Field -->
@@ -544,49 +539,7 @@
     document.getElementById('btn-images').addEventListener('click', () => showPage('page-images'));
     document.getElementById('btn-feedback').addEventListener('click', () => showPage('page-feedback'));
 
-    // Rating system functionality
-    const ratingStars = document.querySelectorAll('.rating-star');
-    const ratingValue = document.getElementById('rating-value');
-    let currentRating = 0;
 
-    ratingStars.forEach(star => {
-      star.addEventListener('click', () => {
-        const rating = parseInt(star.dataset.rating);
-        currentRating = rating;
-        ratingValue.value = rating;
-        
-        // Update star colors
-        ratingStars.forEach((s, index) => {
-          if (index < rating) {
-            s.style.color = '#fbbf24';
-          } else {
-            s.style.color = '#e2e8f0';
-          }
-        });
-      });
-
-      star.addEventListener('mouseenter', () => {
-        const rating = parseInt(star.dataset.rating);
-        ratingStars.forEach((s, index) => {
-          if (index < rating) {
-            s.style.color = '#fbbf24';
-          } else {
-            s.style.color = '#e2e8f0';
-          }
-        });
-      });
-    });
-
-    // Reset stars on mouse leave
-    document.querySelector('.rating-star').parentElement.addEventListener('mouseleave', () => {
-      ratingStars.forEach((s, index) => {
-        if (index < currentRating) {
-          s.style.color = '#fbbf24';
-        } else {
-          s.style.color = '#e2e8f0';
-        }
-      });
-    });
 
     // Form submission
     document.getElementById('feedback-form').addEventListener('submit', (e) => {
@@ -609,9 +562,6 @@
         // Reset form after showing success
         setTimeout(() => {
           form.reset();
-          currentRating = 0;
-          ratingValue.value = '';
-          ratingStars.forEach(s => s.style.color = '#e2e8f0');
           
           form.style.display = 'block';
           successMessage.style.display = 'none';
@@ -670,5 +620,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9979699ea66bc7d2',t:'MTc2MTk3OTM1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99796d663789c7d2',t:'MTc2MTk3OTUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
