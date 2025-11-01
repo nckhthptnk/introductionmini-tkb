@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thời gian biểu mini</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+    
+    .page {
+      min-height: 100%;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .page.active {
+      display: block;
+      opacity: 1;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    
+    .nav-button {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-2px);
+    }
+    
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1a202c;
+    }
+    
+    .subsection-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: #2d3748;
+    }
+    
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .bullet-list li {
+      padding-left: 28px;
+      position: relative;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    
+    .bullet-list li:before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    a:hover {
+      opacity: 0.8;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="gradient-bg" style="padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+   <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;"><a href="https://nckhthptnk.github.io/minitkb/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: flex; align-items: center; gap: 12px; transition: opacity 0.2s;">
+     <div style="width: 40px; height: 40px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+      📅
+     </div><h1 id="nav-title" style="color: white; font-size: 20px; font-weight: 700; margin: 0;">Thời gian biểu mini</h1></a>
+    <div style="display: flex; gap: 12px;"><button class="nav-button" id="btn-home" style="background: white; color: #8b0000;">Trang chủ</button> <button class="nav-button" id="btn-intro" style="background: white; color: #8b0000;">Giới thiệu</button>
+    </div>
+   </div>
+  </nav><!-- Page 1: Home -->
+  <div id="page-home" class="page active">
+   <div class="gradient-bg" style="padding: 80px 24px; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+     <h1 id="home-title" style="color: #8b0000; font-size: 48px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px;">Thời gian biểu mini</h1>
+     <p id="home-subtitle" style="color: #4a0e0e; font-size: 20px; margin-bottom: 32px;">Giải pháp quản lý thời khóa biểu thông minh dành cho học sinh</p><button class="nav-button" id="btn-learn-more" style="background: white; color: #667eea; font-size: 18px; padding: 16px 32px;">Tìm hiểu thêm</button>
+    </div>
+   </div>
+   <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px;"><!-- Features Section with cute icons -->
+    <div style="margin-bottom: 80px;">
+     <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">✨ Tính năng nổi bật ✨</h2>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-bottom: 48px;"><!-- Feature 1 -->
+      <div class="card" style="padding: 32px; text-align: center;">
+       <div style="font-size: 48px; margin-bottom: 16px;">
+        📱
+       </div>
+       <h3 style="font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 12px;">Tra cứu nhanh</h3>
+       <p style="color: #718096; line-height: 1.6;">Xem thời khóa biểu mọi lúc mọi nơi, chỉ cần một cú click!</p>
+      </div><!-- Feature 2 -->
+      <div class="card" style="padding: 32px; text-align: center;">
+       <div style="font-size: 48px; margin-bottom: 16px;">
+        🎨
+       </div>
+       <h3 style="font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 12px;">Cá nhân hóa</h3>
+       <p style="color: #718096; line-height: 1.6;">Tùy chỉnh giao diện theo sở thích riêng của bạn!</p>
+      </div><!-- Feature 3 -->
+      <div class="card" style="padding: 32px; text-align: center;">
+       <div style="font-size: 48px; margin-bottom: 16px;">
+        📸
+       </div>
+       <h3 style="font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 12px;">Xuất ảnh</h3>
+       <p style="color: #718096; line-height: 1.6;">Lưu thời khóa biểu thành hình nền điện thoại siêu tiện lợi!</p>
+      </div><!-- Feature 4 -->
+      <div class="card" style="padding: 32px; text-align: center;">
+       <div style="font-size: 48px; margin-bottom: 16px;">
+        ⏰
+       </div>
+       <h3 style="font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 12px;">Quản lý thời gian</h3>
+       <p style="color: #718096; line-height: 1.6;">Phân bổ thời gian học tập hợp lý, cải thiện hiệu quả học tập!</p>
+      </div>
+     </div><!-- Decorative elements -->
+     <div style="text-align: center; margin: 48px 0;">
+      <div style="display: inline-flex; gap: 24px; font-size: 32px; opacity: 0.7;"><span style="animation: bounce 2s infinite;">🌟</span> <span style="animation: bounce 2s infinite 0.2s;">💫</span> <span style="animation: bounce 2s infinite 0.4s;">✨</span> <span style="animation: bounce 2s infinite 0.6s;">🎯</span> <span style="animation: bounce 2s infinite 0.8s;">🚀</span>
+      </div>
+     </div>
+    </div><!-- About Us Section -->
+    <div style="background: #f8fafc; padding: 64px 24px;">
+     <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">About Us</h2>
+      <div class="card" style="padding: 40px;">
+       <div style="text-align: center; margin-bottom: 32px;">
+        <p style="color: #718096; font-size: 18px; margin-bottom: 8px;">Nhóm nghiên cứu đến từ</p>
+        <h3 id="about-school" style="font-size: 24px; font-weight: 700; color: #1a202c; margin-bottom: 8px;">THPT Nguyễn Khuyến</h3>
+       </div>
+       <div style="border-top: 2px solid #e2e8f0; padding-top: 32px;">
+        <div style="margin-bottom: 24px;">
+         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+          <div style="width: 40px; height: 40px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+           👨‍🏫
+          </div>
+          <div>
+           <p style="color: #718096; font-size: 14px; margin: 0;">Giáo viên hướng dẫn</p>
+           <p id="about-teacher" style="color: #1a202c; font-size: 18px; font-weight: 600; margin: 0;">Nguyễn Thành Luân</p>
+          </div>
+         </div>
+        </div>
+        <div style="background: #f7fafc; border-radius: 12px; padding: 24px;">
+         <p style="color: #718096; font-size: 14px; margin-bottom: 12px; font-weight: 600;">Người thực hiện</p>
+         <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+           <div style="width: 32px; height: 32px; background: #dbeafe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+            👩‍🎓
+           </div>
+           <p id="about-student1" style="color: #1a202c; font-size: 16px; margin: 0;">Trịnh Thị Ngọc Linh</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+           <div style="width: 32px; height: 32px; background: #fce7f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+            👩‍🎓
+           </div>
+           <p id="about-student2" style="color: #1a202c; font-size: 16px; margin: 0;">Nguyễn Thị Thảo Yến</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div><!-- Page 2: Introduction -->
+  <div id="page-intro" class="page">
+   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
+    <h2 class="section-title">Giới thiệu dự án</h2><!-- Mở đầu -->
+    <div class="card" style="padding: 40px; margin-bottom: 32px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px;">Mở đầu</h3>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">1. Tính mới</h4>
+      <ul class="bullet-list" style="color: #4a5568;">
+       <li>Cá nhân hóa thời khóa biểu theo sở thích/lối sống, hướng tới tự học và quản trị thời gian.</li>
+       <li>Xuất lịch thành ảnh để làm hình nền/in ấn, giúp xem nhanh ngay cả khi không mở app.</li>
+       <li>Trải nghiệm tra cứu tức thì, phù hợp thói quen dùng điện thoại/máy tính.</li>
+      </ul>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">2. Tính cộng đồng</h4>
+      <ul class="bullet-list" style="color: #4a5568;">
+       <li>Mã nguồn dùng chung tạo "nguồn lịch thống nhất" cho toàn trường; cập nhật thay đổi theo thời gian thực.</li>
+       <li>Nâng văn hóa đúng giờ, giảm gián đoạn, hỗ trợ thông báo lịch kiểm tra/thi; dữ liệu tập trung cho BGH–GV–HS theo dõi.</li>
+       <li>Riêng tư mặc định: lịch cá nhân chỉ người nhập thấy; không hiển thị giờ dạy của giáo viên; dễ chia sẻ/tuỳ biến cho đơn vị khác.</li>
+      </ul>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">3. Tính khoa học</h4>
+      <ul class="bullet-list" style="color: #4a5568;">
+       <li>Cơ sở lý thuyết: SRL, Information Foraging/UX, micro-learning cho tra cứu nhanh.</li>
+       <li>Đảm bảo chất lượng theo ISO/IEC 25010; đánh giá usability bằng SUS/UMUX-Lite và chỉ số web LCP/TTFB/FID.</li>
+       <li>Quy trình lặp–kiểm thử–cải tiến; kiến trúc mobile-first tĩnh, tách dữ liệu công/riêng, phân quyền; tái lập qua versioning &amp; CSV/ICS; thu thập khảo sát người dùng.</li>
+      </ul>
+     </div>
+     <div>
+      <h4 class="subsection-title">4. Tính thực tiễn</h4>
+      <ul class="bullet-list" style="color: #4a5568;">
+       <li>Phù hợp bối cảnh THPT Nguyễn Khuyến: tra cứu theo lớp–môn–GV–phòng; chạy trên web, miễn phí, không cần cài đặt.</li>
+       <li>Xuất ảnh/in ấn, đồng bộ toàn trường, nhắc lịch kiểm tra/thi; hỗ trợ quản lý giảm trùng lịch, theo dõi vận hành.</li>
+       <li>Bảo đảm riêng tư; mô-đun dễ bảo trì–mở rộng; sẵn sàng tích hợp SSO/LDAP, Google Calendar/ICS; dễ nhân rộng.</li>
+      </ul>
+     </div>
+    </div><!-- Lý do chọn đề tài -->
+    <div class="card" style="padding: 40px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px;">Lý do chọn đề tài</h3>
+     <div style="color: #4a5568; line-height: 1.8; font-size: 16px;">
+      <p style="margin-bottom: 16px;">Từ năm 2022–2023, GDPT 2018 triển khai toàn quốc, nhấn mạnh phát triển phẩm chất–năng lực và thúc đẩy chuyển đổi số. Ở THPT, ngoài 9 môn bắt buộc, học sinh có chuyên đề tự chọn; từ 2025–2026 mỗi ngày không quá 7 tiết, làm nhu cầu cá nhân hóa TKB và điều chỉnh linh hoạt trở nên cấp thiết.</p>
+      <p style="margin-bottom: 16px;">TKB giấy khó cập nhật, thiếu nhắc nhở, dễ trùng/nhầm lịch. Phần mềm <strong>Thời gian biểu mini</strong> khắc phục các hạn chế này: cho phép tự thiết kế và cập nhật tức thì, hỗ trợ nhắc nhở/xuất lịch, hướng tới chia sẻ lịch GV–HS, qua đó nâng cao hiệu quả quản lý và chất lượng học tập theo hướng linh hoạt, bền vững.</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "Thời gian biểu mini",
+      subtitle: "Giải pháp quản lý thời khóa biểu thông minh dành cho học sinh",
+      school_name: "THPT Nguyễn Khuyến",
+      teacher_name: "Nguyễn Thành Luân",
+      student_1: "Trịnh Thị Ngọc Linh",
+      student_2: "Nguyễn Thị Thảo Yến"
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const schoolName = config.school_name || defaultConfig.school_name;
+      const teacherName = config.teacher_name || defaultConfig.teacher_name;
+      const student1 = config.student_1 || defaultConfig.student_1;
+      const student2 = config.student_2 || defaultConfig.student_2;
+
+      document.getElementById('nav-title').textContent = mainTitle;
+      document.getElementById('home-title').textContent = mainTitle;
+      document.getElementById('home-subtitle').textContent = subtitle;
+      document.getElementById('about-school').textContent = schoolName;
+      document.getElementById('about-teacher').textContent = teacherName;
+      document.getElementById('about-student1').textContent = student1;
+      document.getElementById('about-student2').textContent = student2;
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    document.getElementById('btn-home').addEventListener('click', () => showPage('page-home'));
+    document.getElementById('btn-intro').addEventListener('click', () => showPage('page-intro'));
+    document.getElementById('btn-learn-more').addEventListener('click', () => showPage('page-intro'));
+
+
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["school_name", config.school_name || defaultConfig.school_name],
+          ["teacher_name", config.teacher_name || defaultConfig.teacher_name],
+          ["student_1", config.student_1 || defaultConfig.student_1],
+          ["student_2", config.student_2 || defaultConfig.student_2]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9978e6e104fac7d2',t:'MTc2MTk3Mzk5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
