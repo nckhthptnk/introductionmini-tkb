@@ -17,6 +17,8 @@
     html, body {
       height: 100%;
       overflow-x: hidden;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      min-height: 100%;
     }
     
     .page {
@@ -137,13 +139,22 @@
    </div>
   </nav><!-- Page 1: Home -->
   <div id="page-home" class="page active">
-   <div class="gradient-bg" style="padding: 80px 24px; text-align: center;">
+   <div style="padding: 80px 24px; text-align: center;">
     <div style="max-width: 800px; margin: 0 auto;">
      <h1 id="home-title" style="color: #8b0000; font-size: 48px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px;">Thời gian biểu mini</h1>
      <p id="home-subtitle" style="color: #4a0e0e; font-size: 20px; margin-bottom: 32px;">Giải pháp quản lý thời khóa biểu thông minh dành cho học sinh</p><button class="nav-button" id="btn-learn-more" style="background: white; color: #667eea; font-size: 18px; padding: 16px 32px;">Tìm hiểu thêm</button>
     </div>
    </div>
-   <div style="max-width: 1400px; margin: 0 auto; padding: 48px 32px;"><!-- Features Section with cute icons -->
+   <div style="max-width: 1400px; margin: 0 auto; padding: 0 32px 48px 32px;"><!-- Decorative Divider -->
+    <div style="text-align: center; padding: 60px 24px;">
+     <div style="max-width: 600px; margin: 0 auto; position: relative;">
+      <div style="height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.6) 80%, transparent 100%); margin: 20px 0;"></div>
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 12px 24px; border-radius: 50px; backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+       <div style="display: flex; align-items: center; justify-content: center;"><span style="font-size: 16px; font-weight: 600; color: #8b0000;">Just be yourself</span>
+       </div>
+      </div>
+     </div>
+    </div><!-- Features Section with cute icons -->
     <div style="margin-bottom: 80px;">
      <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">✨ Tính năng nổi bật ✨</h2>
      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px; max-width: 1400px; margin-left: auto; margin-right: auto;"><!-- Feature 1 -->
@@ -195,42 +206,71 @@
       </div>
      </div>
     </div><!-- About Us Section -->
-    <div style="background: #f8fafc; padding: 48px 32px; border-radius: 16px; margin: 0 -32px;">
+    <div style="background: rgba(255, 255, 255, 0.3); padding: 48px 32px; border-radius: 16px; margin: 0 -32px; backdrop-filter: blur(10px);">
      <div style="max-width: 1000px; margin: 0 auto;">
       <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">About Us</h2>
-      <div class="card" style="padding: 40px;">
+      <div class="card" style="padding: 40px; max-width: 700px; margin: 0 auto;">
        <div style="text-align: center; margin-bottom: 32px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">
+         🎓
+        </div>
         <p style="color: #718096; font-size: 18px; margin-bottom: 8px;">Nhóm nghiên cứu đến từ</p>
-        <h3 id="about-school" style="font-size: 24px; font-weight: 700; color: #1a202c; margin-bottom: 8px;">THPT Nguyễn Khuyến</h3>
+        <h3 id="about-school" style="font-size: 24px; font-weight: 700; color: #1a202c; margin-bottom: 16px;">THPT Nguyễn Khuyến</h3>
+        <p style="color: #4a5568; font-size: 16px; line-height: 1.6; font-style: italic;">"Chúng tôi tận dụng sự tiến bộ của công nghệ để phát triển Phần mềm Thời gian biểu Mini, giúp học sinh sắp xếp kế hoạch học tập linh hoạt, theo dõi tiến độ và quản lý thời gian hiệu quả hơn."</p>
        </div>
        <div style="border-top: 2px solid #e2e8f0; padding-top: 32px;">
-        <div style="margin-bottom: 24px;">
-         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-          <div style="width: 40px; height: 40px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">
-           👨‍🏫
-          </div>
-          <div>
-           <p style="color: #718096; font-size: 14px; margin: 0;">Giáo viên hướng dẫn</p>
-           <p id="about-teacher" style="color: #1a202c; font-size: 18px; font-weight: 600; margin: 0;">Nguyễn Thành Luân</p>
+        <div style="background: #f7fafc; border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+         <p style="color: #718096; font-size: 14px; margin-bottom: 20px; font-weight: 600; text-align: center;">Thành viên thực hiện</p>
+         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;"><!-- Giáo viên hướng dẫn -->
+          <div style="text-align: center;">
+           <p style="color: #718096; font-size: 12px; margin-bottom: 12px; font-weight: 600;">Giáo viên hướng dẫn</p>
+           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div style="width: 40px; height: 40px; background: #fef3c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+             👨‍🏫
+            </div>
+            <p id="about-teacher" style="color: #1a202c; font-size: 16px; font-weight: 600; margin: 0;">Nguyễn Thành Luân</p>
+           </div>
+          </div><!-- Học sinh thực hiện -->
+          <div style="text-align: center;">
+           <p style="color: #718096; font-size: 12px; margin-bottom: 12px; font-weight: 600;">Học sinh thực hiện</p>
+           <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+             <div style="width: 32px; height: 32px; background: #dbeafe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+              👩‍🎓
+             </div>
+             <p id="about-student1" style="color: #1a202c; font-size: 14px; margin: 0;">Trịnh Thị Ngọc Linh</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+             <div style="width: 32px; height: 32px; background: #fce7f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+              👩‍🎓
+             </div>
+             <p id="about-student2" style="color: #1a202c; font-size: 14px; margin: 0;">Nguyễn Thị Thảo Yến</p>
+            </div>
+           </div>
           </div>
          </div>
-        </div>
-        <div style="background: #f7fafc; border-radius: 12px; padding: 24px;">
-         <p style="color: #718096; font-size: 14px; margin-bottom: 12px; font-weight: 600;">Người thực hiện</p>
-         <div style="display: flex; flex-direction: column; gap: 12px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-           <div style="width: 32px; height: 32px; background: #dbeafe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
-            👩‍🎓
-           </div>
-           <p id="about-student1" style="color: #1a202c; font-size: 16px; margin: 0;">Trịnh Thị Ngọc Linh</p>
+        </div><!-- Mission & Vision -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+         <div style="background: #e6fffa; color: #2d3748; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 24px; margin-bottom: 8px;">
+           🎯
           </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-           <div style="width: 32px; height: 32px; background: #fce7f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px;">
-            👩‍🎓
-           </div>
-           <p id="about-student2" style="color: #1a202c; font-size: 16px; margin: 0;">Nguyễn Thị Thảo Yến</p>
-          </div>
+          <h4 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0;">Sứ mệnh</h4>
+          <p style="font-size: 14px; margin: 0;">Mang lại trải nghiệm học tập hiệu quả và thú vị</p>
          </div>
+         <div style="background: #e6fffa; color: #2d3748; padding: 20px; border-radius: 12px; text-align: center;">
+          <div style="font-size: 24px; margin-bottom: 8px;">
+           🚀
+          </div>
+          <h4 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0;">Tầm nhìn</h4>
+          <p style="font-size: 14px; margin: 0;">Trở thành công cụ hỗ trợ học tập giúp nâng cao hiệu quả học tập</p>
+         </div>
+        </div><!-- Contact Info -->
+        <div style="background: #e6fffa; border-radius: 12px; padding: 20px; text-align: center;">
+         <div style="font-size: 24px; margin-bottom: 12px;">
+          📧
+         </div>
+         <p style="color: #2d3748; font-size: 14px; margin: 0; font-weight: 500;">Liên hệ với chúng tôi để được hỗ trợ hoặc đóng góp ý kiến</p>
         </div>
        </div>
       </div>
@@ -352,5 +392,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9978f2fc251dc7d2',t:'MTc2MTk3NDQ5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997911dac553c7d2',t:'MTc2MTk3NTc1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
