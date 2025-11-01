@@ -124,6 +124,10 @@
     a:hover {
       opacity: 0.8;
     }
+    
+    .tool-card:hover {
+      transform: translateY(-4px);
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -131,7 +135,7 @@
  <body><!-- Navigation -->
   <nav class="gradient-bg" style="padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px;">
-    <div style="display: flex; gap: 12px; flex-wrap: wrap;"><button class="nav-button" id="btn-home" style="background: white; color: #8b0000;">Trang chủ</button> <button class="nav-button" id="btn-intro" style="background: white; color: #8b0000;">Giới thiệu</button> <button class="nav-button" id="btn-data" style="background: white; color: #8b0000;">Số liệu</button> <button class="nav-button" id="btn-images" style="background: white; color: #8b0000;">Hình ảnh</button> <button class="nav-button" id="btn-feedback" style="background: white; color: #8b0000;">Feedback</button>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;"><button class="nav-button" id="btn-home" style="background: white; color: #8b0000;">Trang chủ</button> <button class="nav-button" id="btn-intro" style="background: white; color: #8b0000;">Giới thiệu</button> <button class="nav-button" id="btn-method" style="background: white; color: #8b0000;">Phương pháp</button> <button class="nav-button" id="btn-data" style="background: white; color: #8b0000;">Số liệu</button> <button class="nav-button" id="btn-images" style="background: white; color: #8b0000;">Hình ảnh</button> <button class="nav-button" id="btn-feedback" style="background: white; color: #8b0000;">Feedback</button>
     </div>
    </div>
   </nav><!-- Page 1: Home -->
@@ -338,7 +342,7 @@
       </ul>
      </div>
     </div><!-- Mục tiêu -->
-    <div class="card" style="padding: 40px;">
+    <div class="card" style="padding: 40px; margin-bottom: 32px;">
      <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px;">Mục tiêu</h3>
      <div style="margin-bottom: 32px;">
       <h4 class="subsection-title">Quản lý thời gian cá nhân hóa</h4>
@@ -352,9 +356,189 @@
       <h4 class="subsection-title">Tối ưu tự học &amp; kỷ luật</h4>
       <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Sắp xếp hợp lý các khoảng tự học để tránh chồng việc, giảm căng thẳng trước kiểm tra; nâng độ tin cậy/tiện dụng, tạo dữ liệu nền cho quản lý–phân bổ, rèn tự quản thời gian và thói quen chèn khoảng nghỉ hợp lý.</p>
      </div>
+    </div><!-- Giả thuyết khoa học -->
+    <div class="card" style="padding: 40px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px;">Giả thuyết khoa học</h3>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">Thói quen và sự hài lòng</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Khi có một nguồn lịch thống nhất, thao tác tra cứu nhanh và thông tin rõ ràng, học sinh hình thành thói quen xem lịch hằng ngày và cảm thấy hài lòng hơn.</p>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">Giảm nhầm lẫn thông tin</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Việc dùng một kênh duy nhất giúp giảm nhầm lẫn giữa nhiều nguồn và hạn chế phải hỏi lại bạn bè.</p>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">Cá nhân hóa và hiệu quả</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Lịch học và mục tiêu được cá nhân hóa giúp không bỏ sót việc cần làm và tạo mạch làm việc khả thi.</p>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">Sẵn sàng học tập</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Bám theo kế hoạch phù hợp với nhịp sống cá nhân giúp học sinh vào lớp trong trạng thái sẵn sàng, chuẩn bị bài tốt và duy trì nhịp học ổn định.</p>
+     </div>
+     <div style="margin-bottom: 32px;">
+      <h4 class="subsection-title">Thông tin đúng lúc</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Ứng dụng cho phép xem lịch trong nhiều bối cảnh với thông tin đến đúng lúc, giúp nhận biết kịp thời đổi phòng hoặc đổi môn.</p>
+     </div>
+     <div>
+      <h4 class="subsection-title">Giảm lỗi do thiếu thông tin</h4>
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px;">Nhờ truy cập nhanh gọn và cập nhật tức thời, các lỗi do thiếu thông tin như quên bài, đi trễ hoặc nhầm phòng được giảm đáng kể.</p>
+     </div>
     </div>
    </div>
-  </div><!-- Page 3: Data -->
+  </div><!-- Page 3: Method -->
+  <div id="page-method" class="page">
+   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
+    <h2 class="section-title">Phương pháp nghiên cứu</h2><!-- Tổng hợp và Phân loại lý thuyết -->
+    <div class="card" style="padding: 32px; margin-bottom: 32px;">
+     <h3 style="font-size: 20px; font-weight: 700; color: #667eea; margin-bottom: 24px; text-align: center;">Tổng hợp và Phân loại lý thuyết</h3><!-- Compact Flowchart -->
+     <div style="text-align: center; margin-bottom: 16px;">
+      <h4 style="font-size: 18px; font-weight: 600; color: #2d3748; margin: 0;">Tổng hợp lý thuyết</h4>
+     </div>
+     <div style="background: #f8fafc; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; font-size: 11px;">
+       <div style="background: #e6fffa; border: 1px solid #38b2ac; border-radius: 4px; padding: 6px 8px; text-align: center; min-width: 80px;">
+        <div style="font-size: 14px; margin-bottom: 2px;">
+         📚
+        </div>
+        <div style="font-weight: 600; color: #2d3748;">
+         Rà soát
+        </div>
+       </div>
+       <div style="color: #38b2ac; font-size: 12px;">
+        →
+       </div>
+       <div style="background: #fef5e7; border: 1px solid #ed8936; border-radius: 4px; padding: 6px 8px; text-align: center; min-width: 80px;">
+        <div style="font-size: 14px; margin-bottom: 2px;">
+         🔍
+        </div>
+        <div style="font-weight: 600; color: #2d3748;">
+         Trích xuất
+        </div>
+       </div>
+       <div style="color: #ed8936; font-size: 12px;">
+        →
+       </div>
+       <div style="background: #e6fffa; border: 1px solid #38b2ac; border-radius: 4px; padding: 6px 8px; text-align: center; min-width: 80px;">
+        <div style="font-size: 14px; margin-bottom: 2px;">
+         ⚖️
+        </div>
+        <div style="font-weight: 600; color: #2d3748;">
+         Phân tích
+        </div>
+       </div>
+       <div style="color: #38b2ac; font-size: 12px;">
+        →
+       </div>
+       <div style="background: #fef5e7; border: 1px solid #ed8936; border-radius: 4px; padding: 6px 8px; text-align: center; min-width: 80px;">
+        <div style="font-size: 14px; margin-bottom: 2px;">
+         ✅
+        </div>
+        <div style="font-weight: 600; color: #2d3748;">
+         Kiểm tra
+        </div>
+       </div>
+       <div style="color: #ed8936; font-size: 12px;">
+        →
+       </div>
+       <div style="background: #e6fffa; border: 1px solid #38b2ac; border-radius: 4px; padding: 6px 8px; text-align: center; min-width: 80px;">
+        <div style="font-size: 14px; margin-bottom: 2px;">
+         🎯
+        </div>
+        <div style="font-weight: 600; color: #2d3748;">
+         Sử dụng
+        </div>
+       </div>
+      </div>
+     </div><!-- Diagram Caption -->
+     <div style="text-align: center; margin-bottom: 20px;">
+      <p style="color: #4a5568; font-size: 13px; font-style: italic; margin: 0;"><strong>Sơ đồ.</strong> Các bước tổng hợp và phân tích dữ liệu lý thuyết cho nghiên cứu</p>
+     </div><!-- Phân loại lý thuyết title -->
+     <div style="text-align: center; margin-bottom: 16px;">
+      <h4 style="font-size: 18px; font-weight: 600; color: #2d3748; margin: 0;">Phân loại lý thuyết</h4>
+     </div><!-- Phân loại compact -->
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+      <div style="background: #e6fffa; border-radius: 8px; padding: 16px; text-align: center;">
+       <div style="font-size: 20px; margin-bottom: 8px;">
+        📋
+       </div>
+       <h4 style="font-size: 14px; font-weight: 600; color: #2d3748; margin: 0;">Theo chủ đề</h4>
+      </div>
+      <div style="background: #fef5e7; border-radius: 8px; padding: 16px; text-align: center;">
+       <div style="font-size: 20px; margin-bottom: 8px;">
+        🔬
+       </div>
+       <h4 style="font-size: 14px; font-weight: 600; color: #2d3748; margin: 0;">Theo mức trừu tượng</h4>
+      </div>
+      <div style="background: #e6fffa; border-radius: 8px; padding: 16px; text-align: center;">
+       <div style="font-size: 20px; margin-bottom: 8px;">
+        🌍
+       </div>
+       <h4 style="font-size: 14px; font-weight: 600; color: #2d3748; margin: 0;">Theo bối cảnh</h4>
+      </div>
+      <div style="background: #fef5e7; border-radius: 8px; padding: 16px; text-align: center;">
+       <div style="font-size: 20px; margin-bottom: 8px;">
+        📝
+       </div>
+       <h4 style="font-size: 14px; font-weight: 600; color: #2d3748; margin: 0;">Chuẩn hóa thuật ngữ</h4>
+      </div>
+     </div>
+    </div><!-- Công cụ và phần mềm hỗ trợ -->
+    <div class="card" style="padding: 40px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">Công cụ và phần mềm hỗ trợ</h3><!-- Tools Grid -->
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto;"><!-- HTML -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        🌐
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">HTML</h4>
+       <p style="font-size: 11px; opacity: 0.9; margin: 0;">Markup Language</p>
+      </div><!-- CSS -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(78, 205, 196, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        🎨
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">CSS</h4>
+       <p style="font-size: 11px; opacity: 0.9; margin: 0;">Style Sheets</p>
+      </div><!-- Google Gemini -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        🤖
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">Gemini</h4>
+       <p style="font-size: 11px; opacity: 0.9; margin: 0;">AI Assistant</p>
+      </div><!-- Anthropic Claude -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(240, 147, 251, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        🧠
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">Claude</h4>
+       <p style="font-size: 11px; opacity: 0.9; margin: 0;">AI Assistant</p>
+      </div><!-- OpenAI ChatGPT -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #2d3748; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(252, 182, 159, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        💬
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">ChatGPT</h4>
+       <p style="font-size: 11px; opacity: 0.8; margin: 0;">AI Assistant</p>
+      </div><!-- Canva -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #a8edea, #fed6e3); color: #2d3748; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(168, 237, 234, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        ✨
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">Canva</h4>
+       <p style="font-size: 11px; opacity: 0.8; margin: 0;">Design Tool</p>
+      </div><!-- GitHub -->
+      <div class="tool-card" style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 16px; border-radius: 10px; text-align: center; box-shadow: 0 3px 8px rgba(44, 62, 80, 0.3); transition: transform 0.2s; cursor: pointer;">
+       <div style="font-size: 24px; margin-bottom: 8px;">
+        📂
+       </div>
+       <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 4px;">GitHub</h4>
+       <p style="font-size: 11px; opacity: 0.9; margin: 0;">Code Repository</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div><!-- Page 4: Data -->
   <div id="page-data" class="page">
    <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
     <h2 class="section-title">Số liệu</h2><!-- Placeholder content -->
@@ -366,23 +550,11 @@
      <p style="color: #718096; font-size: 16px; line-height: 1.6;">Trang số liệu sẽ hiển thị các thống kê, biểu đồ và dữ liệu phân tích về việc sử dụng phần mềm Thời gian biểu mini.</p>
     </div>
    </div>
-  </div><!-- Page 4: Images -->
+  </div><!-- Page 5: Images -->
   <div id="page-images" class="page">
    <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
-    <h2 class="section-title">Hình ảnh</h2><!-- Placeholder content -->
-    <div class="card" style="padding: 40px; text-align: center;">
-     <div style="font-size: 64px; margin-bottom: 24px; opacity: 0.3;">
-      🖼️
-     </div>
-     <h3 style="font-size: 24px; font-weight: 600; color: #4a5568; margin-bottom: 16px;">Nội dung đang được cập nhật</h3>
-     <p style="color: #718096; font-size: 16px; line-height: 1.6;">Trang hình ảnh sẽ hiển thị các ảnh chụp màn hình, giao diện và minh họa về phần mềm Thời gian biểu mini.</p>
-    </div>
-   </div>
-  </div><!-- Page 5: Feedback -->
-  <div id="page-feedback" class="page">
-   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
-    <h2 class="section-title">Feedback</h2><!-- User Experience Gallery -->
-    <div class="card" style="padding: 40px; margin-bottom: 32px;">
+    <h2 class="section-title">Hình ảnh</h2><!-- User Experience Gallery -->
+    <div class="card" style="padding: 40px;">
      <div style="text-align: center; margin-bottom: 32px;">
       <div style="font-size: 48px; margin-bottom: 16px;">
        📸
@@ -439,11 +611,16 @@
        📤
       </div>
       <h4 style="color: #2d3748; font-size: 18px; font-weight: 600; margin-bottom: 8px;">Bạn đã sử dụng phần mềm?</h4>
-      <p style="color: #4a5568; font-size: 14px; margin-bottom: 16px;">Hãy chụp màn hình và gửi cho chúng tôi qua form phản hồi bên dưới!</p>
+      <p style="color: #4a5568; font-size: 14px; margin-bottom: 16px;">Hãy chụp màn hình và gửi cho chúng tôi qua form phản hồi!</p>
       <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;"><span style="background: white; color: #38a169; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">📱 Ảnh trên điện thoại</span> <span style="background: white; color: #3182ce; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">💻 Ảnh trên máy tính</span> <span style="background: white; color: #805ad5; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">🎨 Ảnh tùy chỉnh</span>
       </div>
      </div>
-    </div><!-- Feedback Form -->
+    </div>
+   </div>
+  </div><!-- Page 6: Feedback -->
+  <div id="page-feedback" class="page">
+   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
+    <h2 class="section-title">Feedback</h2><!-- Feedback Form -->
     <div class="card" style="padding: 40px; margin-bottom: 32px;">
      <div style="text-align: center; margin-bottom: 32px;">
       <div style="font-size: 48px; margin-bottom: 16px;">
@@ -511,7 +688,6 @@
       const student1 = config.student_1 || defaultConfig.student_1;
       const student2 = config.student_2 || defaultConfig.student_2;
 
-      document.getElementById('nav-title').textContent = mainTitle;
       document.getElementById('home-title').textContent = mainTitle;
       document.getElementById('home-subtitle').textContent = subtitle;
       document.getElementById('about-school').textContent = schoolName;
@@ -535,11 +711,10 @@
 
     document.getElementById('btn-home').addEventListener('click', () => showPage('page-home'));
     document.getElementById('btn-intro').addEventListener('click', () => showPage('page-intro'));
+    document.getElementById('btn-method').addEventListener('click', () => showPage('page-method'));
     document.getElementById('btn-data').addEventListener('click', () => showPage('page-data'));
     document.getElementById('btn-images').addEventListener('click', () => showPage('page-images'));
     document.getElementById('btn-feedback').addEventListener('click', () => showPage('page-feedback'));
-
-
 
     // Form submission
     document.getElementById('feedback-form').addEventListener('submit', (e) => {
@@ -597,8 +772,6 @@
       submitBtn.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
     });
 
-
-
     if (window.elementSdk) {
       window.elementSdk.init({
         defaultConfig,
@@ -620,5 +793,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99796d663789c7d2',t:'MTc2MTk3OTUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997a4c05000fc7d2',t:'MTc2MTk4ODYyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
