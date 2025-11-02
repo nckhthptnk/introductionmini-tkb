@@ -1374,7 +1374,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feedback Form</title>
-  <script src="/_sdk/data_sdk.js"></script>
+  <!doctype html>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Information</title>
   <script src="/_sdk/element_sdk.js"></script>
   <style>
     body {
@@ -1425,103 +1430,33 @@
       text-align: center;
     }
 
-    .card-description {
-      color: #4a5568;
-      line-height: 1.6;
+    .feedback-link-container {
       text-align: center;
       margin-bottom: 32px;
     }
 
-    .form-group {
-      margin-bottom: 24px;
-    }
-
-    .form-label {
-      display: block;
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      font-family: inherit;
-    }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      outline: none;
-      border-color: #ff8a95;
-      box-shadow: 0 0 0 3px rgba(255, 138, 149, 0.1);
-    }
-
-    .form-textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 16px 32px;
+    .feedback-link {
+      display: inline-block;
       background: linear-gradient(135deg, #ffb3ba 0%, #ff8a95 100%);
       color: #ffffff;
-      border: none;
-      border-radius: 8px;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
-      cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(255, 179, 186, 0.3);
     }
 
-    .submit-btn:hover {
+    .feedback-link:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(255, 179, 186, 0.4);
-    }
-
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .success-message {
-      display: none;
-      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      text-decoration: none;
       color: #ffffff;
-      padding: 24px;
-      border-radius: 12px;
-      text-align: center;
-      margin-top: 24px;
-      animation: slideIn 0.5s ease;
     }
 
-    .success-message.show {
-      display: block;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .feedback-link:active {
+      transform: translateY(0);
     }
 
     .contact-grid {
@@ -1584,34 +1519,16 @@
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
   <div class="container">
    <h1 class="page-title" id="page-title">💬 Feedback &amp; Góp ý 📝</h1>
    <div class="card">
-    <h2 class="card-title" id="form-title">📮 Gửi phản hồi của bạn</h2>
-    <p class="card-description" id="form-description">Chúng tôi cam kết phản hồi và cải thiện phần mềm dựa trên những góp ý quý báu từ người dùng. Cảm ơn bạn đã đồng hành cùng dự án!</p>
-    <form id="feedback-form">
-     <div class="form-group"><label for="fullname" class="form-label">Họ và tên *</label> <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Nhập họ và tên của bạn" required>
-     </div>
-     <div class="form-group"><label for="email" class="form-label">Email (không bắt buộc)</label> <input type="email" id="email" name="email" class="form-input" placeholder="email@example.com">
-     </div>
-     <div class="form-group"><label for="feedback-type" class="form-label">Loại phản hồi *</label> <select id="feedback-type" name="feedback-type" class="form-select" required> <option value="">Chọn loại phản hồi</option> <option value="suggestion">💡 Đề xuất cải tiến</option> <option value="bug">🐛 Báo cáo lỗi</option> <option value="compliment">👏 Khen ngợi</option> <option value="question">❓ Câu hỏi</option> <option value="other">📝 Khác</option> </select>
-     </div>
-     <div class="form-group"><label for="message" class="form-label">Nội dung chi tiết *</label> <textarea id="message" name="message" class="form-textarea" placeholder="Chia sẻ chi tiết ý kiến, đề xuất hoặc vấn đề bạn gặp phải..." required></textarea>
-     </div><button type="submit" id="submit-btn" class="submit-btn"> <span id="submit-button-text">Gửi phản hồi 📤</span> </button>
-     <div id="success-message" class="success-message">
-      <div style="font-size: 32px; margin-bottom: 12px;">
-       🎉
-      </div>
-      <h4 id="success-title" style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Cảm ơn bạn đã gửi phản hồi!</h4>
-      <p style="margin: 0; font-size: 14px;">Chúng tôi đã nhận được ý kiến đóng góp của bạn và sẽ xem xét cẩn thận. Form sẽ tự động reset sau 5 giây.</p>
-     </div>
-    </form>
-   </div>
-   <div class="card">
     <h2 class="card-title" id="contact-title">📞 Thông tin liên hệ</h2>
+    <div class="feedback-link-container"><a href="https://forms.gle/CmzUi9JV7kUgyAVM7" target="_blank" rel="noopener noreferrer" class="feedback-link"> 💬 Nhấn vào đây khi bạn có góp ý cho chúng mình nhé </a>
+    </div>
     <div class="contact-grid">
      <div class="contact-card">
       <div class="contact-icon">
@@ -1641,41 +1558,20 @@
   <script>
     const defaultConfig = {
       page_title: "💬 Feedback & Góp ý 📝",
-      form_title: "📮 Gửi phản hồi của bạn",
-      form_description: "Chúng tôi cam kết phản hồi và cải thiện phần mềm dựa trên những góp ý quý báu từ người dùng. Cảm ơn bạn đã đồng hành cùng dự án!",
-      submit_button_text: "Gửi phản hồi 📤",
-      success_title: "Cảm ơn bạn đã gửi phản hồi!",
       contact_title: "📞 Thông tin liên hệ",
       school_name: "Trường THPT Nguyễn Khuyến",
       teacher_name: "Nguyễn Thành Luân",
       background_color: "#ffb3ba",
-      card_background: "#ffffff",
-      primary_text: "#2d3748",
-      accent_color: "#ff8a95",
-      success_color: "#38a169"
-    };
-
-    const dataHandler = {
-      onDataChanged(data) {
-        // Data is stored but not displayed in this write-only form
-      }
+      accent_color: "#ff8a95"
     };
 
     async function onConfigChange(config) {
       const pageTitleEl = document.getElementById('page-title');
-      const formTitleEl = document.getElementById('form-title');
-      const formDescEl = document.getElementById('form-description');
-      const submitBtnTextEl = document.getElementById('submit-button-text');
-      const successTitleEl = document.getElementById('success-title');
       const contactTitleEl = document.getElementById('contact-title');
       const schoolNameEl = document.getElementById('school-name');
       const teacherNameEl = document.getElementById('teacher-name');
 
       if (pageTitleEl) pageTitleEl.textContent = config.page_title || defaultConfig.page_title;
-      if (formTitleEl) formTitleEl.textContent = config.form_title || defaultConfig.form_title;
-      if (formDescEl) formDescEl.textContent = config.form_description || defaultConfig.form_description;
-      if (submitBtnTextEl) submitBtnTextEl.textContent = config.submit_button_text || defaultConfig.submit_button_text;
-      if (successTitleEl) successTitleEl.textContent = config.success_title || defaultConfig.success_title;
       if (contactTitleEl) contactTitleEl.textContent = config.contact_title || defaultConfig.contact_title;
       if (schoolNameEl) schoolNameEl.textContent = config.school_name || defaultConfig.school_name;
       if (teacherNameEl) teacherNameEl.textContent = config.teacher_name || defaultConfig.teacher_name;
@@ -1691,13 +1587,6 @@
     }
 
     async function initializeApp() {
-      if (window.dataSdk) {
-        const initResult = await window.dataSdk.init(dataHandler);
-        if (!initResult.isOk) {
-          console.error('Failed to initialize data SDK');
-        }
-      }
-
       if (window.elementSdk) {
         window.elementSdk.init({
           defaultConfig,
@@ -1725,57 +1614,15 @@
           }),
           mapToEditPanelValues: (config) => new Map([
             ["page_title", config.page_title || defaultConfig.page_title],
-            ["form_title", config.form_title || defaultConfig.form_title],
-            ["form_description", config.form_description || defaultConfig.form_description],
-            ["submit_button_text", config.submit_button_text || defaultConfig.submit_button_text],
-            ["success_title", config.success_title || defaultConfig.success_title],
             ["contact_title", config.contact_title || defaultConfig.contact_title],
             ["school_name", config.school_name || defaultConfig.school_name],
             ["teacher_name", config.teacher_name || defaultConfig.teacher_name]
           ])
         });
       }
-
-      const form = document.getElementById('feedback-form');
-      const submitBtn = document.getElementById('submit-btn');
-      const successMessage = document.getElementById('success-message');
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const formData = {
-          fullname: document.getElementById('fullname').value,
-          email: document.getElementById('email').value,
-          feedback_type: document.getElementById('feedback-type').value,
-          message: document.getElementById('message').value,
-          submitted_at: new Date().toISOString()
-        };
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Đang gửi...';
-
-        if (window.dataSdk) {
-          const result = await window.dataSdk.create(formData);
-
-          if (result.isOk) {
-            successMessage.classList.add('show');
-            form.reset();
-
-            setTimeout(() => {
-              successMessage.classList.remove('show');
-            }, 5000);
-          } else {
-            alert('Có lỗi xảy ra khi gửi phản hồi. Vui lòng thử lại.');
-          }
-        }
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span id="submit-button-text">${window.elementSdk?.config?.submit_button_text || defaultConfig.submit_button_text}</span>`;
-      });
     }
 
     initializeApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9980e97db229c7d2',t:'MTc2MjA1Nzk4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9982cf72813c5e35',t:'MTc2MjA3Nzg5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
