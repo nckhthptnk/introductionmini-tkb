@@ -132,7 +132,71 @@
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body><!-- Navigation -->
+ <body>
+  <script>
+    // Navigation functionality
+    const pages = ['home', 'intro', 'method', 'data', 'images', 'feedback'];
+    const buttons = ['btn-home', 'btn-intro', 'btn-method', 'btn-data', 'btn-images', 'btn-feedback'];
+    
+    function showPage(pageId) {
+      console.log('Switching to page:', pageId);
+      
+      // Hide all pages
+      pages.forEach(page => {
+        const pageElement = document.getElementById(`page-${page}`);
+        if (pageElement) {
+          pageElement.classList.remove('active');
+          pageElement.style.display = 'none';
+        }
+      });
+      
+      // Show selected page
+      const selectedPage = document.getElementById(`page-${pageId}`);
+      if (selectedPage) {
+        selectedPage.style.display = 'block';
+        setTimeout(() => {
+          selectedPage.classList.add('active');
+        }, 10);
+      }
+      
+      // Update button states
+      buttons.forEach(btnId => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          btn.style.background = 'white';
+          btn.style.color = '#8b0000';
+          btn.style.transform = 'translateY(0)';
+        }
+      });
+      
+      // Highlight active button
+      const activeBtn = document.getElementById(`btn-${pageId}`);
+      if (activeBtn) {
+        activeBtn.style.background = '#8b0000';
+        activeBtn.style.color = 'white';
+        activeBtn.style.transform = 'translateY(-2px)';
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Initialize navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      buttons.forEach((btnId, index) => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showPage(pages[index]);
+          });
+        }
+      });
+      
+      // Show home page by default
+      showPage('home');
+    });
+  </script><!-- Navigation -->
   <nav class="gradient-bg" style="padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div style="display: flex; gap: 12px; flex-wrap: wrap;"><button class="nav-button" id="btn-home" style="background: white; color: #8b0000;">Trang chủ</button> <button class="nav-button" id="btn-intro" style="background: white; color: #8b0000;">Giới thiệu</button> <button class="nav-button" id="btn-method" style="background: white; color: #8b0000;">Phương pháp</button> <button class="nav-button" id="btn-data" style="background: white; color: #8b0000;">Kết quả</button> <button class="nav-button" id="btn-images" style="background: white; color: #8b0000;">Hình ảnh</button> <button class="nav-button" id="btn-feedback" style="background: white; color: #8b0000;">Feedback</button>
@@ -576,7 +640,7 @@
       <p style="color: #4a5568; line-height: 1.8; font-size: 16px; margin-left: 56px;">Chuẩn ISO/IEC 25010 quy định các đặc tính chất lượng phần mềm gồm tính chức năng, hiệu năng–hiệu quả, độ tin cậy, khả dụng, an ninh, khả bảo trì và khả chuyển.</p>
      </div>
     </div><!-- Quy trình thực hiện phần mềm -->
-    <div class="card" style="padding: 40px; margin-top: 32px;">
+    <div class="card" style="padding: 40px; margin-bottom: 32px;">
      <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">Quy trình thực hiện phần mềm</h3><!-- Process Steps Grid -->
      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;"><!-- Bước 1 -->
       <div style="background: linear-gradient(135deg, #e6fffa, #f0fff4); border-radius: 12px; padding: 20px; border-left: 4px solid #38b2ac;">
@@ -827,62 +891,62 @@
   </div><!-- Page 4: Data -->
   <div id="page-data" class="page">
    <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
-    <h2 class="section-title">Kết quả</h2><!-- Chất lượng phần mềm -->
+    <h2 class="section-title">🎉 Kết quả 📊</h2><!-- Chất lượng phần mềm -->
     <div class="card" style="padding: 40px; margin-bottom: 32px;">
-     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">Chất lượng phần mềm</h3><!-- Hiệu năng tải trang -->
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">🏆 Chất lượng phần mềm ⚡</h3><!-- Hiệu năng tải trang -->
      <div style="margin-bottom: 40px;">
       <div style="display: flex; align-items: center; margin-bottom: 20px;">
        <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
         ⚡
        </div>
-       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">1. Hiệu năng tải trang (Core Web Vitals)</h4>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">1. Hiệu năng tải trang (Core Web Vitals) 🚀</h4>
       </div>
       <div style="overflow-x: auto;">
        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
         <thead>
          <tr style="background: linear-gradient(135deg, #38b2ac 0%, #319795 100%); color: white;">
-          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Chỉ số</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Ngưỡng mục tiêu</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Kết quả trung bình</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Đánh giá</th>
+          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Chỉ số 📈</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Ngưỡng mục tiêu 🎯</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Kết quả trung bình 📊</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Đánh giá 🏅</th>
          </tr>
         </thead>
         <tbody>
          <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">LCP</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">LCP ⚡</td>
           <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">&lt; 2.5 s</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">1.94 s</td>
-          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">Đạt</span></td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">✅ Đạt</span></td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">INP</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">INP 🎮</td>
           <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">&lt; 200 ms</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">135 ms</td>
-          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">Đạt</span></td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">✅ Đạt</span></td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">CLS</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">CLS 📐</td>
           <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">&lt; 0.1</td>
           <td style="padding: 16px; text-align: center; color: #ed8936; font-weight: 600; border-right: 1px solid #e2e8f0;">0.05</td>
-          <td style="padding: 16px; text-align: center;"><span style="background: #fef5e7; color: #ed8936; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">Ổn định</span></td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #fef5e7; color: #ed8936; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">⚖️ Ổn định</span></td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">TTFB</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">TTFB 🌐</td>
           <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">&lt; 0.8 s</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">0.42 s</td>
-          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">Đạt</span></td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">✅ Đạt</span></td>
          </tr>
          <tr style="background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Performance Score</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Performance Score 🏆</td>
           <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">≥ 80 điểm</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">96 điểm</td>
-          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">Cao</span></td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">🌟 Cao</span></td>
          </tr>
         </tbody>
        </table>
       </div><!-- Table Caption -->
       <div style="text-align: center; margin-top: 12px;">
-       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 1.</strong> Kết quả chỉ số hiệu năng tải trang</p>
+       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 1.</strong> Kết quả chỉ số hiệu năng tải trang 📊</p>
       </div>
      </div><!-- Độ tin cậy và khả năng truy cập -->
      <div style="margin-bottom: 40px;">
@@ -890,7 +954,7 @@
        <div style="background: #fef5e7; color: #ed8936; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
         🛡️
        </div>
-       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">2. Độ tin cậy và khả năng truy cập</h4>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">2. Độ tin cậy và khả năng truy cập 🔒</h4>
       </div>
       <div style="background: #f0fff4; border-radius: 12px; padding: 24px; border-left: 4px solid #38a169;">
        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;"><!-- Uptime -->
@@ -898,7 +962,7 @@
          <div style="font-size: 24px; margin-bottom: 8px;">
           ⏱️
          </div>
-         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">Uptime</h5>
+         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">Uptime 🚀</h5>
          <p style="color: #38a169; font-size: 20px; font-weight: 700; margin: 0;">100%</p>
          <p style="color: #718096; font-size: 11px; margin-top: 4px;">UptimeRobot</p>
         </div><!-- HTTP Errors -->
@@ -906,7 +970,7 @@
          <div style="font-size: 24px; margin-bottom: 8px;">
           🚫
          </div>
-         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">Lỗi HTTP</h5>
+         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">Lỗi HTTP 🔧</h5>
          <p style="color: #38a169; font-size: 20px; font-weight: 700; margin: 0;">&lt; 0.05%</p>
          <p style="color: #718096; font-size: 11px; margin-top: 4px;">4xx–5xx errors</p>
         </div><!-- WCAG -->
@@ -914,7 +978,7 @@
          <div style="font-size: 24px; margin-bottom: 8px;">
           ♿
          </div>
-         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">WCAG</h5>
+         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">WCAG 🌐</h5>
          <p style="color: #38a169; font-size: 20px; font-weight: 700; margin: 0;">AA</p>
          <p style="color: #718096; font-size: 11px; margin-top: 4px;">Accessibility</p>
         </div><!-- SSL Security -->
@@ -922,7 +986,7 @@
          <div style="font-size: 24px; margin-bottom: 8px;">
           🔒
          </div>
-         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">SSL Labs</h5>
+         <h5 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 4px;">SSL Labs 🛡️</h5>
          <p style="color: #38a169; font-size: 20px; font-weight: 700; margin: 0;">A+</p>
          <p style="color: #718096; font-size: 11px; margin-top: 4px;">TLS 1.3, HSTS</p>
         </div>
@@ -934,68 +998,68 @@
        <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
         ✅
        </div>
-       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">3. Kết quả đánh giá</h4>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">3. Kết quả đánh giá 🎯</h4>
       </div>
       <div style="background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%); border-radius: 12px; padding: 24px; text-align: center;">
        <div style="font-size: 32px; margin-bottom: 16px;">
         🎯
        </div>
-       <p style="color: #2f855a; font-size: 18px; font-weight: 600; margin-bottom: 12px;">Tổng kết hiệu năng</p>
-       <p style="color: #38a169; font-size: 16px; line-height: 1.6; margin: 0;">Các chỉ số hiệu năng đều đạt hoặc vượt chuẩn, chứng tỏ giao diện tải nhanh, ổn định và thân thiện với thiết bị di động.</p>
+       <p style="color: #2f855a; font-size: 18px; font-weight: 600; margin-bottom: 12px;">Tổng kết hiệu năng 🚀</p>
+       <p style="color: #38a169; font-size: 16px; line-height: 1.6; margin: 0;">Các chỉ số hiệu năng đều đạt hoặc vượt chuẩn, chứng tỏ giao diện tải nhanh, ổn định và thân thiện với thiết bị di động! 📱💻</p>
       </div>
      </div>
     </div><!-- Tính năng phần mềm -->
     <div class="card" style="padding: 40px; margin-bottom: 32px;">
-     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">Tính năng phần mềm</h3><!-- Bảng tính năng -->
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">🔧 Tính năng phần mềm ⭐</h3><!-- Bảng tính năng -->
      <div style="margin-bottom: 40px;">
       <div style="display: flex; align-items: center; margin-bottom: 20px;">
        <div style="background: #fef5e7; color: #ed8936; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
         🔧
        </div>
-       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">1. Đánh giá tính năng</h4>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">1. Đánh giá tính năng 📋</h4>
       </div>
       <div style="overflow-x: auto;">
        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
         <thead>
          <tr style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); color: white;">
-          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tính năng</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tỉ lệ hoàn thành (%)</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Thời gian TB (s)</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tỉ lệ đúng lần đầu (%)</th>
-          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Hài lòng (1–5)</th>
+          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tính năng 🛠️</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tỉ lệ hoàn thành (%) ✅</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Thời gian TB (s) ⏱️</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tỉ lệ đúng lần đầu (%) 🎯</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Hài lòng (1–5) 😊</th>
          </tr>
         </thead>
         <tbody>
          <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu lớp</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu lớp 🏫</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">98</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">3.8</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">94</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">4.7</td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu môn – GV</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu môn – GV 👨‍🏫</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">95</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4.2</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">91</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">4.6</td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu phòng</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tra cứu phòng 🏢</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">93</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4.5</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">88</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">4.5</td>
          </tr>
          <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Thông báo</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Thông báo 📢</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">90</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">2.9</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">92</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">4.8</td>
          </tr>
          <tr style="background: #f8fafc;">
-          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Lịch kiểm tra – thi</td>
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Lịch kiểm tra – thi 📝</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">92</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">3.1</td>
           <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">90</td>
@@ -1005,7 +1069,7 @@
        </table>
       </div><!-- Table Caption -->
       <div style="text-align: center; margin-top: 12px;">
-       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 2.</strong> Kết quả đánh giá tính năng phần mềm</p>
+       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 2.</strong> Kết quả đánh giá tính năng phần mềm 📊</p>
       </div>
      </div><!-- Kết quả đánh giá tính năng -->
      <div>
@@ -1013,260 +1077,361 @@
        <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
         ✅
        </div>
-       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">2. Kết quả đánh giá</h4>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">2. Kết quả đánh giá 🎉</h4>
       </div>
       <div style="background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%); border-radius: 12px; padding: 24px; text-align: center;">
        <div style="font-size: 32px; margin-bottom: 16px;">
         📊
        </div>
-       <p style="color: #2f855a; font-size: 18px; font-weight: 600; margin-bottom: 12px;">Tổng kết tính năng</p>
-       <p style="color: #38a169; font-size: 16px; line-height: 1.6; margin: 0;">Mức độ hài lòng trung bình đạt 4.7/5, không ghi nhận lỗi nghiêm trọng.</p>
+       <p style="color: #2f855a; font-size: 18px; font-weight: 600; margin-bottom: 12px;">Tổng kết tính năng 🌟</p>
+       <p style="color: #38a169; font-size: 16px; line-height: 1.6; margin: 0;">Mức độ hài lòng trung bình đạt 4.7/5, không ghi nhận lỗi nghiêm trọng! 🎯✨</p>
       </div>
      </div>
-    </div>
-   </div>
-  </div><!-- Page 5: Images -->
-  <div id="page-images" class="page">
-   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
-    <h2 class="section-title">Hình ảnh</h2><!-- User Experience Gallery -->
-    <div class="card" style="padding: 40px;">
-     <div style="text-align: center; margin-bottom: 32px;">
-      <div style="font-size: 48px; margin-bottom: 16px;">
-       📸
-      </div>
-      <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 16px;">Trải nghiệm của người dùng</h3>
-      <p style="color: #718096; font-size: 16px; line-height: 1.6;">Những hình ảnh chụp màn hình từ người dùng thực tế khi sử dụng phần mềm Thời gian biểu mini</p>
-     </div><!-- Image Placeholders Grid -->
-     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px;"><!-- Image Placeholder 1 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👩‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div><!-- Image Placeholder 2 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👨‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div><!-- Image Placeholder 3 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👩‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div><!-- Image Placeholder 4 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👨‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div><!-- Image Placeholder 5 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👩‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div><!-- Image Placeholder 6 -->
-      <div style="background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 12px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-       <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;">
-        👨‍🎓
-       </div>
-       <p style="color: #a0aec0; font-size: 14px; font-weight: 500; margin: 0;">Ảnh học sinh sử dụng phần mềm</p>
-       <p style="color: #cbd5e0; font-size: 12px; margin-top: 8px;">Sẽ được cập nhật sớm</p>
-      </div>
-     </div><!-- Call to Action for Users -->
-     <div style="background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%); border-radius: 12px; padding: 24px; text-align: center;">
-      <div style="font-size: 32px; margin-bottom: 12px;">
-       📤
-      </div>
-      <h4 style="color: #2d3748; font-size: 18px; font-weight: 600; margin-bottom: 8px;">Bạn đã sử dụng phần mềm?</h4>
-      <p style="color: #4a5568; font-size: 14px; margin-bottom: 16px;">Hãy chụp màn hình và gửi cho chúng tôi qua form phản hồi!</p>
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;"><span style="background: white; color: #38a169; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">📱 Ảnh trên điện thoại</span> <span style="background: white; color: #3182ce; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">💻 Ảnh trên máy tính</span> <span style="background: white; color: #805ad5; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 500;">🎨 Ảnh tùy chỉnh</span>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div><!-- Page 6: Feedback -->
-  <div id="page-feedback" class="page">
-   <div style="max-width: 900px; margin: 0 auto; padding: 64px 24px;">
-    <h2 class="section-title">Feedback</h2><!-- Feedback Form -->
+    </div><!-- Trải nghiệm người dùng (UX) -->
     <div class="card" style="padding: 40px; margin-bottom: 32px;">
-     <div style="text-align: center; margin-bottom: 32px;">
-      <div style="font-size: 48px; margin-bottom: 16px;">
-       💬
-      </div>
-      <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 16px;">Chia sẻ ý kiến của bạn</h3>
-      <p style="color: #718096; font-size: 16px; line-height: 1.6;">Chúng tôi rất mong nhận được phản hồi từ bạn để cải thiện phần mềm Thời gian biểu mini</p>
-     </div>
-     <form id="feedback-form" style="max-width: 600px; margin: 0 auto;"><!-- Name Field -->
-      <div style="margin-bottom: 24px;"><label for="feedback-name" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Họ và tên</label> <input type="text" id="feedback-name" name="name" placeholder="Nhập họ và tên của bạn" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; transition: border-color 0.2s; box-sizing: border-box;">
-      </div><!-- Email Field -->
-      <div style="margin-bottom: 24px;"><label for="feedback-email" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Email (tùy chọn)</label> <input type="email" id="feedback-email" name="email" placeholder="email@example.com" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; transition: border-color 0.2s; box-sizing: border-box;">
-      </div><!-- Category Field -->
-      <div style="margin-bottom: 24px;"><label for="feedback-category" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Loại phản hồi</label> <select id="feedback-category" name="category" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; background: white; box-sizing: border-box;"> <option value="">Chọn loại phản hồi</option> <option value="bug">Báo lỗi</option> <option value="feature">Đề xuất tính năng</option> <option value="improvement">Cải thiện</option> <option value="general">Ý kiến chung</option> <option value="other">Khác</option> </select>
-      </div><!-- Message Field -->
-      <div style="margin-bottom: 32px;"><label for="feedback-message" style="display: block; font-weight: 600; color: #2d3748; margin-bottom: 8px; font-size: 14px;">Nội dung phản hồi</label> <textarea id="feedback-message" name="message" rows="6" placeholder="Chia sẻ chi tiết ý kiến, đề xuất hoặc báo cáo lỗi của bạn..." style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; resize: vertical; font-family: inherit; line-height: 1.5; box-sizing: border-box;"></textarea>
-      </div><!-- Submit Button -->
-      <div style="text-align: center;"><button type="submit" id="submit-feedback" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);"> Gửi phản hồi </button>
-      </div>
-     </form><!-- Success Message -->
-     <div id="success-message" style="display: none; text-align: center; margin-top: 32px; padding: 24px; background: #f0fff4; border: 2px solid #68d391; border-radius: 12px;">
-      <div style="font-size: 48px; margin-bottom: 16px;">
-       ✅
-      </div>
-      <h3 style="color: #2f855a; font-size: 20px; font-weight: 600; margin-bottom: 8px;">Cảm ơn bạn!</h3>
-      <p style="color: #38a169; font-size: 16px; margin: 0;">Phản hồi của bạn đã được gửi thành công. Chúng tôi sẽ xem xét và cải thiện phần mềm dựa trên ý kiến của bạn.</p>
-     </div>
-    </div><!-- Contact Info -->
-    <div class="card" style="padding: 32px;">
-     <h3 style="font-size: 20px; font-weight: 700; color: #667eea; margin-bottom: 20px; text-align: center;">Thông tin liên hệ</h3>
-     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-      <div style="text-align: center; padding: 20px; background: #f7fafc; border-radius: 12px;">
-       <div style="font-size: 32px; margin-bottom: 12px;">
-        🏫
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">👥 Trải nghiệm người dùng (UX) 🎨</h3><!-- Mô tả khảo sát -->
+     <div style="margin-bottom: 32px;">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+       <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
+        👥
        </div>
-       <h4 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 8px;">Trường học</h4>
-       <p style="color: #718096; font-size: 14px; margin: 0;">THPT Nguyễn Khuyến</p>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">Khảo sát ý kiến giáo viên và học sinh 📝</h4>
       </div>
-      <div style="text-align: center; padding: 20px; background: #f7fafc; border-radius: 12px;">
-       <div style="font-size: 32px; margin-bottom: 12px;">
-        📧
+      <p style="color: #4a5568; line-height: 1.8; font-size: 16px; margin-bottom: 24px; margin-left: 56px;">Sau khi thiết kế phần mềm thành công và chạy thử nghiệm phần mềm, nhóm nghiên cứu đã tiến hành khảo sát ý kiến Thầy/Cô và học sinh về phần mềm theo các tiêu chí mức độ dễ sử dụng; tốc độ phản hồi; tính chính xác lịch; tính hữu ích thông báo; mức rõ ràng của giao diện; mức hài lòng chung. 🎯</p>
+      <div style="overflow-x: auto;">
+       <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+        <thead>
+         <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tiêu chí 📋</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 1 😞</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 2 😐</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 3 😊</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 4 😄</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 5 🤩</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Điểm TB 📊</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Dễ sử dụng 🎯</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">1</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">5</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">88/100</td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tốc độ phản hồi ⚡</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">1</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">1</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">80/100</td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Độ chính xác lịch ✅</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">2</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">84/100</td>
+         </tr>
+         <tr style="background: #f8fafc;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Giao diện rõ ràng 🎨</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">0</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">1</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">5</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">86/100</td>
+         </tr>
+        </tbody>
+       </table>
+      </div><!-- Table Caption -->
+      <div style="text-align: center; margin-top: 12px;">
+       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 3.</strong> Kết quả khảo sát giáo viên (N=10) 👨‍🏫</p>
+      </div><!-- Bảng 4: Kết quả khảo sát học sinh -->
+      <div style="margin-top: 32px; overflow-x: auto;">
+       <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+        <thead>
+         <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tiêu chí 📋</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 1 😞</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 2 😐</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 3 😊</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 4 😄</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Mức 5 🤩</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Điểm TB 📊</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Dễ sử dụng 🎯</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">2</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">8</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">22</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">86</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">86</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">84.2</td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Tốc độ phản hồi ⚡</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">3</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">12</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">26</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">82</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">81</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">82.2</td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Độ chính xác lịch ✅</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">4</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">14</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">30</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">78</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">78</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">80.8</td>
+         </tr>
+         <tr style="background: #f8fafc;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Giao diện rõ ràng 🎨</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">3</td>
+          <td style="padding: 16px; text-align: center; color: #e53e3e; font-weight: 600; border-right: 1px solid #e2e8f0;">10</td>
+          <td style="padding: 16px; text-align: center; color: #d69e2e; font-weight: 600; border-right: 1px solid #e2e8f0;">28</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">82</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">81</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600;">82.4</td>
+         </tr>
+        </tbody>
+       </table>
+      </div><!-- Table Caption for Bảng 4 -->
+      <div style="text-align: center; margin-top: 12px;">
+       <p style="color: #4a5568; font-size: 14px; font-style: italic; margin: 0;"><strong>Bảng 4.</strong> Kết quả khảo sát học sinh (N=204) 👩‍🎓👨‍🎓</p>
+      </div>
+     </div><!-- Biểu đồ tròn kết quả -->
+     <div style="margin-bottom: 32px;">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+       <div style="background: #fef5e7; color: #ed8936; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
+        📊
        </div>
-       <h4 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 8px;">Email hỗ trợ</h4>
-       <p style="color: #718096; font-size: 14px; margin: 0;">Liên hệ qua giáo viên hướng dẫn</p>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">Biểu đồ mức độ hài lòng 😊📈</h4>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center;"><!-- Biểu đồ tròn giáo viên -->
+       <div style="text-align: center;">
+        <h5 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 16px;">👨‍🏫 Giáo viên (N=10)</h5>
+        <div style="position: relative; width: 200px; height: 200px; margin: 0 auto;">
+         <svg width="200" height="200" viewbox="0 0 200 200" style="transform: rotate(-90deg);"><!-- Background circle --> <circle cx="100" cy="100" r="80" fill="none" stroke="#e2e8f0" stroke-width="20"></circle> <!-- Bình thường: 10% = 50.27 out of 502.65 --> <circle cx="100" cy="100" r="80" fill="none" stroke="#d69e2e" stroke-width="20" stroke-dasharray="50.27 502.65" stroke-linecap="round"></circle> <!-- Hài lòng: 30% = 150.8 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#68d391" stroke-width="20" stroke-dasharray="150.8 502.65" stroke-dashoffset="-50.27" stroke-linecap="round"></circle> <!-- Rất hài lòng: 60% = 301.59 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#2f855a" stroke-width="20" stroke-dasharray="301.59 502.65" stroke-dashoffset="-201.07" stroke-linecap="round"></circle>
+         </svg>
+         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+          <div style="font-size: 32px; font-weight: 700; color: #38a169;">
+           90%
+          </div>
+          <div style="font-size: 12px; color: #718096;">
+           Hài lòng 😊
+          </div>
+         </div>
+        </div><!-- Chi tiết số liệu giáo viên -->
+        <div style="margin-top: 20px; background: #f8fafc; border-radius: 8px; padding: 16px; text-align: left; max-width: 280px; margin-left: auto; margin-right: auto;">
+         <h6 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 12px; text-align: center;">Chi tiết mức độ hài lòng 📊</h6>
+         <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #e53e3e; border-radius: 50%;"></div><span style="color: #4a5568;">😞 Rất không hài lòng</span>
+           </div><span style="font-weight: 600; color: #e53e3e;">0%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #f56565; border-radius: 50%;"></div><span style="color: #4a5568;">😐 Không hài lòng</span>
+           </div><span style="font-weight: 600; color: #f56565;">0%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #d69e2e; border-radius: 50%;"></div><span style="color: #4a5568;">😊 Bình thường</span>
+           </div><span style="font-weight: 600; color: #d69e2e;">10%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #68d391; border-radius: 50%;"></div><span style="color: #4a5568;">😄 Hài lòng</span>
+           </div><span style="font-weight: 600; color: #68d391;">30%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #2f855a; border-radius: 50%;"></div><span style="color: #4a5568;">🤩 Rất hài lòng</span>
+           </div><span style="font-weight: 600; color: #2f855a;">60%</span>
+          </div>
+         </div>
+        </div>
+       </div><!-- Biểu đồ tròn học sinh -->
+       <div style="text-align: center;">
+        <h5 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 16px;">👩‍🎓👨‍🎓 Học sinh (N=204)</h5>
+        <div style="position: relative; width: 200px; height: 200px; margin: 0 auto;">
+         <svg width="200" height="200" viewbox="0 0 200 200" style="transform: rotate(-90deg);"><!-- Background circle --> <circle cx="100" cy="100" r="80" fill="none" stroke="#e2e8f0" stroke-width="20"></circle> <!-- Rất không hài lòng: 2% = 10.05 out of 502.65 --> <circle cx="100" cy="100" r="80" fill="none" stroke="#e53e3e" stroke-width="20" stroke-dasharray="10.05 502.65" stroke-linecap="round"></circle> <!-- Không hài lòng: 5% = 25.13 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#f56565" stroke-width="20" stroke-dasharray="25.13 502.65" stroke-dashoffset="-10.05" stroke-linecap="round"></circle> <!-- Bình thường: 12% = 60.32 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#d69e2e" stroke-width="20" stroke-dasharray="60.32 502.65" stroke-dashoffset="-35.18" stroke-linecap="round"></circle> <!-- Hài lòng: 38% = 191.01 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#48bb78" stroke-width="20" stroke-dasharray="191.01 502.65" stroke-dashoffset="-95.5" stroke-linecap="round"></circle> <!-- Rất hài lòng: 43% = 216.14 out of 502.65, starting after previous --> <circle cx="100" cy="100" r="80" fill="none" stroke="#38a169" stroke-width="20" stroke-dasharray="216.14 502.65" stroke-dashoffset="-286.51" stroke-linecap="round"></circle>
+         </svg>
+         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+          <div style="font-size: 32px; font-weight: 700; color: #38a169;">
+           81%
+          </div>
+          <div style="font-size: 12px; color: #718096;">
+           Hài lòng 😊
+          </div>
+         </div>
+        </div><!-- Chi tiết số liệu học sinh -->
+        <div style="margin-top: 20px; background: #f8fafc; border-radius: 8px; padding: 16px; text-align: left; max-width: 280px; margin-left: auto; margin-right: auto;">
+         <h6 style="font-size: 14px; font-weight: 600; color: #2d3748; margin-bottom: 12px; text-align: center;">Chi tiết mức độ hài lòng 📊</h6>
+         <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #e53e3e; border-radius: 50%;"></div><span style="color: #4a5568;">😞 Rất không hài lòng</span>
+           </div><span style="font-weight: 600; color: #e53e3e;">2%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #f56565; border-radius: 50%;"></div><span style="color: #4a5568;">😐 Không hài lòng</span>
+           </div><span style="font-weight: 600; color: #f56565;">5%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #d69e2e; border-radius: 50%;"></div><span style="color: #4a5568;">😊 Bình thường</span>
+           </div><span style="font-weight: 600; color: #d69e2e;">12%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #48bb78; border-radius: 50%;"></div><span style="color: #4a5568;">😄 Hài lòng</span>
+           </div><span style="font-weight: 600; color: #48bb78;">38%</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+           <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 8px; height: 8px; background: #38a169; border-radius: 50%;"></div><span style="color: #4a5568;">🤩 Rất hài lòng</span>
+           </div><span style="font-weight: 600; color: #38a169;">43%</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Kết quả đánh giá UX -->
+     <div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+       <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
+        ✅
+       </div>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">Kết quả đánh giá UX 🎯</h4>
+      </div>
+      <div style="background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%); border-radius: 12px; padding: 24px; text-align: center;">
+       <div style="font-size: 32px; margin-bottom: 16px;">
+        🎯
+       </div>
+       <p style="color: #2f855a; font-size: 18px; font-weight: 600; margin-bottom: 12px;">Tổng kết trải nghiệm người dùng 🌟</p>
+       <p style="color: #38a169; font-size: 16px; line-height: 1.6; margin: 0;">Phần mềm được đánh giá dễ sử dụng, tốc độ phản hồi tức thời; độ chính xác của lịch cao; giao diện phần mềm thân thiện và dễ tiếp cận! 🎨✨<br><br>
+         Mức độ hài lòng chung tổng thể của giáo viên và học sinh lần lượt đạt 90% và 81% (trung bình 81,42%). 🎉📊</p>
+      </div>
+     </div>
+    </div><!-- Thảo luận kết quả -->
+    <div class="card" style="padding: 40px; margin-bottom: 32px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 32px; text-align: center;">💬 Thảo luận kết quả 🔍</h3><!-- Bảng tổng hợp -->
+     <div style="margin-bottom: 32px;">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+       <div style="background: #e6fffa; color: #38b2ac; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-right: 16px; flex-shrink: 0;">
+        📋
+       </div>
+       <h4 style="font-size: 20px; font-weight: 600; color: #2d3748; margin: 0;">Các chỉ số tổng hợp 📊</h4>
+      </div>
+      <div style="overflow-x: auto;">
+       <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+        <thead>
+         <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+          <th style="padding: 16px; text-align: left; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Tiêu chí 📋</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Ngưỡng đặt ra 🎯</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2);">Kết quả đạt được 📊</th>
+          <th style="padding: 16px; text-align: center; font-weight: 600; font-size: 14px;">Đánh giá 🏅</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">SUS Score 📊</td>
+          <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">≥ 75</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">82,45</td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">✅ Đạt</span></td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+          <td style="padding: 16px; font-weight: 500; color: #2d3748; border-right: 1px solid #e2e8f0;">Uptime 🚀</td>
+          <td style="padding: 16px; text-align: center; color: #4a5568; border-right: 1px solid #e2e8f0;">≥ 99.9%</td>
+          <td style="padding: 16px; text-align: center; color: #38a169; font-weight: 600; border-right: 1px solid #e2e8f0;">100%</td>
+          <td style="padding: 16px; text-align: center;"><span style="background: #f0fff4; color: #38a169; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">✅ Đạt</span></td>
+         </tr>
+         <tr style="background: #f8fafc;">
+         </tr>
+        </tbody>
+       </table>
       </div>
      </div>
     </div>
    </div>
   </div>
-  <script>
-    const defaultConfig = {
-      main_title: "Thời gian biểu mini",
-      subtitle: "Giải pháp quản lý thời khóa biểu thông minh dành cho học sinh",
-      school_name: "THPT Nguyễn Khuyến",
-      teacher_name: "Nguyễn Thành Luân",
-      student_1: "Trịnh Thị Ngọc Linh",
-      student_2: "Nguyễn Thị Thảo Yến"
-    };
-
-    async function onConfigChange(config) {
-      const mainTitle = config.main_title || defaultConfig.main_title;
-      const subtitle = config.subtitle || defaultConfig.subtitle;
-      const schoolName = config.school_name || defaultConfig.school_name;
-      const teacherName = config.teacher_name || defaultConfig.teacher_name;
-      const student1 = config.student_1 || defaultConfig.student_1;
-      const student2 = config.student_2 || defaultConfig.student_2;
-
-      document.getElementById('home-title').textContent = mainTitle;
-      document.getElementById('home-subtitle').textContent = subtitle;
-      document.getElementById('about-school').textContent = schoolName;
-      document.getElementById('about-teacher').textContent = teacherName;
-      document.getElementById('about-student1').textContent = student1;
-      document.getElementById('about-student2').textContent = student2;
-    }
-
-    function showPage(pageId) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => {
-        page.classList.remove('active');
-      });
-      
-      const targetPage = document.getElementById(pageId);
-      if (targetPage) {
-        targetPage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    document.getElementById('btn-home').addEventListener('click', () => showPage('page-home'));
-    document.getElementById('btn-intro').addEventListener('click', () => showPage('page-intro'));
-    document.getElementById('btn-method').addEventListener('click', () => showPage('page-method'));
-    document.getElementById('btn-data').addEventListener('click', () => showPage('page-data'));
-    document.getElementById('btn-images').addEventListener('click', () => showPage('page-images'));
-    document.getElementById('btn-feedback').addEventListener('click', () => showPage('page-feedback'));
-
-    // Form submission
-    document.getElementById('feedback-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const form = e.target;
-      const submitButton = document.getElementById('submit-feedback');
-      const successMessage = document.getElementById('success-message');
-      
-      // Show loading state
-      submitButton.textContent = 'Đang gửi...';
-      submitButton.disabled = true;
-      
-      // Simulate form submission
-      setTimeout(() => {
-        // Hide form and show success message
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
-        
-        // Reset form after showing success
-        setTimeout(() => {
-          form.reset();
-          
-          form.style.display = 'block';
-          successMessage.style.display = 'none';
-          submitButton.textContent = 'Gửi phản hồi';
-          submitButton.disabled = false;
-        }, 3000);
-      }, 1500);
-    });
-
-    // Input focus effects
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-      input.addEventListener('focus', () => {
-        input.style.borderColor = '#667eea';
-        input.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
-      });
-      
-      input.addEventListener('blur', () => {
-        input.style.borderColor = '#e2e8f0';
-        input.style.boxShadow = 'none';
-      });
-    });
-
-    // Submit button hover effect
-    const submitBtn = document.getElementById('submit-feedback');
-    submitBtn.addEventListener('mouseenter', () => {
-      submitBtn.style.transform = 'translateY(-2px)';
-      submitBtn.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.4)';
-    });
-    
-    submitBtn.addEventListener('mouseleave', () => {
-      submitBtn.style.transform = 'translateY(0)';
-      submitBtn.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
-    });
-
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities: (config) => ({
-          recolorables: [],
-          borderables: [],
-          fontEditable: undefined,
-          fontSizeable: undefined
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ["main_title", config.main_title || defaultConfig.main_title],
-          ["subtitle", config.subtitle || defaultConfig.subtitle],
-          ["school_name", config.school_name || defaultConfig.school_name],
-          ["teacher_name", config.teacher_name || defaultConfig.teacher_name],
-          ["student_1", config.student_1 || defaultConfig.student_1],
-          ["student_2", config.student_2 || defaultConfig.student_2]
-        ])
-      });
-    }
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997be6c9c13dc7d2',t:'MTc2MjAwNTQ0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99807845a01fc7d2',t:'MTc2MjA1MzM1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>/div><!-- Page 6: Feedback -->
+  <div id="page-feedback" class="page">
+   <div style="max-width: 800px; margin: 0 auto; padding: 64px 24px;">
+    <h2 class="section-title" style="text-align: center;">💬 Feedback &amp; Góp ý 📝</h2><!-- Feedback Form -->
+    <div class="card" style="padding: 40px; margin-bottom: 32px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px; text-align: center;">📮 Gửi phản hồi của bạn</h3>
+     <p style="color: #4a5568; line-height: 1.6; text-align: center; margin-bottom: 32px;">Ý kiến đóng góp của bạn rất quan trọng để chúng tôi cải thiện phần mềm. Hãy chia sẻ trải nghiệm và đề xuất của bạn! 🌟</p>
+     <form id="feedback-form"><!-- Họ và tên -->
+      <div class="form-group"><label for="fullname" class="form-label">Họ và tên *</label> <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Nhập họ và tên của bạn" required>
+      </div><!-- Email -->
+      <div class="form-group"><label for="email" class="form-label">Email (không bắt buộc)</label> <input type="email" id="email" name="email" class="form-input" placeholder="email@example.com">
+      </div><!-- Loại phản hồi -->
+      <div class="form-group"><label for="feedback-type" class="form-label">Loại phản hồi *</label> <select id="feedback-type" name="feedback-type" class="form-select" required> <option value="">Chọn loại phản hồi</option> <option value="suggestion">💡 Đề xuất cải tiến</option> <option value="bug">🐛 Báo cáo lỗi</option> <option value="compliment">👏 Khen ngợi</option> <option value="question">❓ Câu hỏi</option> <option value="other">📝 Khác</option> </select>
+      </div><!-- Nội dung chi tiết -->
+      <div class="form-group"><label for="message" class="form-label">Nội dung chi tiết *</label> <textarea id="message" name="message" class="form-textarea" placeholder="Chia sẻ chi tiết ý kiến, đề xuất hoặc vấn đề bạn gặp phải..." required></textarea>
+      </div><!-- Submit Button --> <button type="submit" id="submit-btn" class="submit-btn"> Gửi phản hồi 📤 </button> <!-- Success Message -->
+      <div id="success-message" class="success-message">
+       <div style="font-size: 32px; margin-bottom: 12px;">
+        🎉
+       </div>
+       <h4 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Cảm ơn bạn đã gửi phản hồi!</h4>
+       <p style="margin: 0; font-size: 14px;">Chúng tôi đã nhận được ý kiến đóng góp của bạn và sẽ xem xét cẩn thận. Form sẽ tự động reset sau 5 giây.</p>
+      </div>
+     </form>
+    </div><!-- Contact Information -->
+    <div class="card" style="padding: 40px;">
+     <h3 style="font-size: 24px; font-weight: 700; color: #667eea; margin-bottom: 24px; text-align: center;">📞 Thông tin liên hệ</h3>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;"><!-- Trường học -->
+      <div style="background: #f8fafc; border-radius: 12px; padding: 24px; text-align: center; border-left: 4px solid #667eea;">
+       <div style="font-size: 32px; margin-bottom: 12px;">
+        🏫
+       </div>
+       <h4 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 8px;">Trường THPT Nguyễn Khuyến</h4>
+       <p style="color: #4a5568; font-size: 14px; margin: 0; line-height: 1.5;">Địa chỉ: THPT Nguyễn Khuyến, Hòa Hưng, TP.HCM<br>
+         Website: <a href="#" style="color: #667eea; text-decoration: none;">thptnk.edu.vn</a></p>
+      </div><!-- Giáo viên hướng dẫn -->
+      <div style="background: #f8fafc; border-radius: 12px; padding: 24px; text-align: center; border-left: 4px solid #38a169;">
+       <div style="font-size: 32px; margin-bottom: 12px;">
+        👨‍🏫
+       </div>
+       <h4 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 8px;">Thầy Nguyễn Thành Luân</h4>
+       <p style="color: #4a5568; font-size: 14px; margin: 0; line-height: 1.5;">Giáo viên hướng dẫn<br>
+         Bộ môn: Tin học</p>
+      </div><!-- Nhóm thực hiện -->
+      <div style="background: #f8fafc; border-radius: 12px; padding: 24px; text-align: center; border-left: 4px solid #ed8936;">
+       <div style="font-size: 32px; margin-bottom: 12px;">
+        👩‍🎓
+       </div>
+       <h4 style="font-size: 16px; font-weight: 600; color: #2d3748; margin-bottom: 8px;">Nhóm nghiên cứu</h4>
+       <p style="color: #4a5568; font-size: 14px; margin: 0; line-height: 1.5;">Trịnh Thị Ngọc Linh<br>
+         Nguyễn Thị Thảo Yến</p>
+      </div>
+     </div><!-- Additional Info -->
+     <div style="margin-top: 32px; padding: 24px; background: linear-gradient(135deg, #e6fffa, #f0fff4); border-radius: 12px; text-align: center;">
+      <div style="font-size: 24px; margin-bottom: 12px;">
+       💌
+      </div>
+      <p style="color: #2f855a; font-size: 16px; font-weight: 600; margin-bottom: 8px;">Mọi ý kiến đóng góp đều được trân trọng!</p>
+      <p style="color: #38a169; font-size: 14px; margin: 0; line-height: 1.6;">Chúng tôi cam kết phản hồi và cải thiện phần mềm dựa trên những góp ý quý báu từ người dùng. Cảm ơn bạn đã đồng hành cùng dự án! 🙏</p>
+     </div>
+    </div>
+   </div>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9980a933f42cc7d2',t:'MTc2MjA1NTM1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
